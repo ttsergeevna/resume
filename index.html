@@ -1,196 +1,218 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Resume - Kovbasiuk Tetiana</title>
   <style>
-    body {
+    :root{
+      --bg:#f7f7f7;
+      --ink:#333;
+      --primary:#2c3e50;
+      --accent:#3498db;
+    }
+    *{ box-sizing: border-box; }
+
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-      color: #333;
+      background: var(--bg);
+      color: var(--ink);
     }
 
-    header {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
+    /* ===== HEADER (fixed) ===== */
+    header{
+      background: var(--primary);
+      color:#fff;
     }
-
-    header img {
+    .header-wrap{
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap; /* щоб на вузьких екранах елементи переносились */
+    }
+    .header-photo{
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      border: 3px solid white;
+      border: 3px solid #fff;
       object-fit: cover;
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      flex: 0 0 120px; /* фіксована «клітинка» під фото */
+    }
+    .header-text{
+      flex: 1 1 320px;
+      min-width: 260px;
+    }
+    .header-text h1{
+      margin: 0 0 6px 0;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    .role{
+      margin: 0 0 12px 0;
+      font-size: 1.05rem;
+      opacity: .95;
+    }
+    .contact{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .contact li{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.12);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+    .contact a{
+      color:#fff;
+      text-decoration: none;
+    }
+    .contact a:hover{ text-decoration: underline; }
+
+    @media (max-width: 640px){
+      .header-wrap{
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact{ justify-content: center; }
     }
 
-    header h1 {
-      margin: 150px 0 10px 0;
-      font-size: 2.5em;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin: 5px 0;
-    }
-
-    .container {
+    /* ===== CONTENT ===== */
+    .container{
       max-width: 900px;
-      margin: 20px auto;
+      margin: 24px auto;
       padding: 20px;
-      background: white;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+      transition: transform .3s, box-shadow .3s;
     }
-
-    .container:hover {
+    .container:hover{
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,.2);
     }
-
-    section {
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      color: #2c3e50;
+    section{ margin-bottom: 30px; }
+    h2{
+      color: var(--primary);
       border-bottom: 2px solid #ddd;
       padding-bottom: 5px;
       margin-bottom: 15px;
     }
+    ul{ list-style: none; padding: 0; }
+    ul li{ margin-bottom: 10px; }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    .skills span {
+    .skills span{
       display: inline-block;
-      background: #3498db;
-      color: white;
+      background: var(--accent);
+      color: #fff;
       margin: 5px;
       padding: 5px 10px;
       border-radius: 5px;
-      font-size: 0.9em;
+      font-size: .9em;
     }
 
-    .skills-bar {
-      margin: 10px 0;
-    }
-
-    .skills-bar div {
+    .skills-bar{ margin: 10px 0; }
+    .skills-bar div{
       height: 20px;
-      background: #3498db;
+      background: var(--accent);
       border-radius: 10px;
       text-align: right;
       padding-right: 10px;
-      color: white;
+      color: #fff;
       line-height: 20px;
       width: 0;
       animation: fillBar 1.5s forwards;
     }
-
-    @keyframes fillBar {
-      from { width: 0; }
-      to { width: var(--width); }
+    @keyframes fillBar{
+      from{ width: 0; }
+      to{ width: var(--width); }
     }
 
-    footer {
+    footer{
       text-align: center;
       padding: 20px;
-      background: #2c3e50;
-      color: white;
+      background: var(--primary);
+      color: #fff;
       margin-top: 20px;
-    }
-
-    .contacts a {
-      color: #2c3e50;
-      text-decoration: none;
-      margin-right: 15px;
-    }
-
-    .contacts a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="photo.jpg" alt="Фото Тетяни">
-    <h1>Тетяна Ковбасюк</h1>
-    <p>Лікар-Координатор | Організація медичних процесів та команд</p>
-    <p>Email: tkovbasyk@icloud.com | Телефон: +380955641753</p>
+  <header role="banner">
+    <div class="header-wrap">
+      <img class="header-photo" src="photo.jpg" alt="Фото Тетяни Ковбасюк" />
+      <div class="header-text">
+        <h1>Тетяна Ковбасюк</h1>
+        <p class="role">Лікар · Різносторонній спеціаліст · 28 років</p>
+        <ul class="contact" aria-label="Контакти">
+          <li>📧 <a href="mailto:tkovbasyk@icloud.com">tkovbasyk@icloud.com</a></li>
+          <li>📱 <a href="tel:+380955641753">+38 (095) 564 17 53</a></li>
+          <li>📍 м. Новоукраїнка, Кіровоградська обл.</li>
+          <li>🔗 <a href="https://t.me/tetyana_kovbasyuk" target="_blank" rel="noopener">Telegram</a></li>
+          <li> <a href="https://github.com/ttsergeevna" target="_blank" rel="noopener">GitHub</a></li>
+          <li>📷 <a href="https://instagram.com/tt.sergeevna" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
   </header>
 
   <div class="container">
     <section>
       <h2>Про мене</h2>
-      <p>Маю різносторонній досвід: медична освіта та знайомство з ІТ-сферою. Наразі знаходжусь у процесі пошуку себе та свого професійного напрямку. Важливим для мене є розвиток і нові знання, тому з готовністю навчаюся та адаптуюсь до завдань, які ставить роботодавець.</p>
+      <p>Маю різносторонній досвід: медична освіта, робота у виробництві та знайомство з ІТ. Постійно розвиваюсь, швидко адаптуюсь до нових задач і відповідально ставлюсь до стандартів якості та безпеки.<br>
+        Готова пройти навчання, стажування.<br>
+         Готова до переїзду чі роботи віддалено.<br> 
+         В процесі отримання водійського посвідчення.
+      
+      </p>
     </section>
 
     <section>
       <h2>Навички</h2>
       <h3>Професійні навички</h3>
       <ul class="skills">
-        <li><span>Координація медичних процесів</span></li>
-        <li><span>Організація роботи команди</span></li>
-        <li><span>Взаємодія з пацієнтами</span></li>
-        <li><span>Планування та контроль</span></li>
-        <li><span>Розв’язання проблем</span></li>
+        <li><span>Анатомія, фізіологія, медична термінологія</span></li>
+        <li><span>Робота в стресі та багатозадачності</span></li>
+        <li><span>Етика, конфіденційність, протоколи безпеки</span></li>
+        <li><span>Комунікація та клієнтоорієнтованість</span></li>
+        <li><span>Санітарно-гігієнічні норми, асептика</span></li>
+        <li><span>Уважність до деталей, організованість</span></li>
       </ul>
+
       <h3>Додаткові навички (IT)</h3>
-      <div class="skills-bar">
-        <div style="--width:80%">HTML 80%</div>
-      </div>
-      <div class="skills-bar">
-        <div style="--width:75%">CSS 75%</div>
-      </div>
-      <div class="skills-bar">
-        <div style="--width:60%">JavaScript 60%</div>
-      </div>
+      <div class="skills-bar"><div style="--width:80%">HTML 80%</div></div>
+      <div class="skills-bar"><div style="--width:75%">CSS 75%</div></div>
+      <div class="skills-bar"><div style="--width:60%">JavaScript 60%</div></div>
     </section>
 
     <section>
       <h2>Досвід роботи</h2>
       <ul>
-        <li><b>Медичний заклад</b> – Координатор відділення (2022-2025)<br>
-            Організація роботи персоналу, комунікація з пацієнтами, контроль процесів та документації.</li>
-        <li><b>Фріланс / ІТ-проєкти</b> – Створення та підтримка сайтів для клієнтів (2024)</li>
+        <li><b>Телеконтакт</b> — Оператор кол-центру (2020)</li>
+        <li><b>Фахівець з контролю якості (QC Specialist)</b> — Міжнародна виробнича корпорація Sanko Gosei, Англія (2022–2025)</li>
       </ul>
     </section>
 
     <section>
       <h2>Освіта</h2>
       <ul>
-        <li><b>Кіровоградський медичний фаховий коледж ім. Є.Й. Мухіна</b> – Сестра медична (2013-2016)</li>
-        <li><b>Донецький національний медичний університет</b> – Лікар, Медицина (2016-2022)</li>
-        <li><b>GoIt.Global</b> – Frontend Developer (2024) (додаткові навички для цифрових рішень)</li>
+        <li><b>Кіровоградський медичний фаховий коледж ім. Є.Й. Мухіна</b> — Сестра медична (2013–2016)</li>
+        <li><b>Донецький національний медичний університет</b> — Лікар, Медицина (2016–2022)</li>
+        <li><b>GoIT.Global</b> — Frontend Developer (2024)</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Контакти</h2>
-      <div class="contacts">
-        <a href="https://t.me/tetyana_kovbasyuk" target="_blank">Telegram</a>
-        <a href="https://instagram.com/tt.sergeevna" target="_blank">Instagram</a>
-        <a href="mailto:tkovbasyk@icloud.com">Email</a>
-        <a href="https://github.com/ttsergeevna" target="_blank">GitHub</a>
-      </div>
     </section>
   </div>
 
